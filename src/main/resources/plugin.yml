@@ -1,0 +1,5 @@
+main: org.goblom.jsonchat.ChatModifiers
+name: JSONChatModifiers
+version: 1.0
+authors: [Goblom]
+depends: [JSONChat]
