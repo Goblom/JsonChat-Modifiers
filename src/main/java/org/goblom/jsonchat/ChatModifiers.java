@@ -44,6 +44,11 @@ public class ChatModifiers extends JavaPlugin {
         if (isEnabled("XP")) {
             register(new XpModifier(this));
         }
+        
+        if (isEnabled("Level")) {
+            register(new LevelModifier(this, "level"));
+            register(new LevelModifier(this, "lvl"));
+        }
     }
     
     private boolean isEnabled(String mod) {
