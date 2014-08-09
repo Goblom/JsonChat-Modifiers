@@ -49,6 +49,10 @@ public class ChatModifiers extends JavaPlugin {
             register(new LevelModifier(this, "level"));
             register(new LevelModifier(this, "lvl"));
         }
+        
+        if (isEnabled("Food")) {
+            register(new FoodModifier(this));
+        }
     }
     
     private boolean isEnabled(String mod) {
