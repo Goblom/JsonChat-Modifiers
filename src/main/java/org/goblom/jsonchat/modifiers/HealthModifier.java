@@ -27,8 +27,8 @@ import org.goblom.jsonchat.ChatModifiers;
  */
 public class HealthModifier extends ChatModifier {
 
-    public HealthModifier(ChatModifiers plugin) {
-        super(plugin, "health", "Display the current health of the player");
+    public HealthModifier(ChatModifiers plugin, String lookFor) {
+        super(plugin, lookFor, "Display the current health of the player");
     }
 
     @Override

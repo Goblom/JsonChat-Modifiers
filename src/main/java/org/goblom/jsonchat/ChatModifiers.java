@@ -32,7 +32,8 @@ public class ChatModifiers extends JavaPlugin {
         saveDefaultConfig();
         
         if (isEnabled("Health")) {
-            register(new HealthModifier(this));
+            register(new HealthModifier(this, "health"));
+            register(new HealthModifier(this, "hp"));
         }
         
         if (isEnabled("Location")) {
