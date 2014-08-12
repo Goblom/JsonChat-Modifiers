@@ -53,6 +53,13 @@ public class ChatModifiers extends JavaPlugin {
         if (isEnabled("Food")) {
             register(new FoodModifier(this));
         }
+        
+        if (isEnabled("Balance") && getServer().getPluginManager().getPlugin("Vault") != null) {
+            BalanceModifier.load();
+            register(new BalanceModifier(this, "balance"));
+            register(new BalanceModifier(this, "bal"));
+            register(new BalanceModifier(this, "money"));
+        }
     }
     
     private boolean isEnabled(String mod) {

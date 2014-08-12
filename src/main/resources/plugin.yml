@@ -3,3 +3,4 @@ name: JSONChatModifiers
 version: 1.0
 authors: [Goblom]
 depend: [JSONChat]
+softdepend: [Vault]
