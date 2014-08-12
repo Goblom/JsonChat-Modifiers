@@ -32,48 +32,48 @@ public class ChatModifiers extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         
-        if (isEnabled("Health")) {
+        if (isEnabled("Health", true)) {
             register(new HealthModifier(this, "health"));
             register(new HealthModifier(this, "hp"));
         }
         
-        if (isEnabled("Location")) {
+        if (isEnabled("Location", true)) {
             register(new LocationModifier(this, "location"));
             register(new LocationModifier(this, "loc"));
         }
         
-        if (isEnabled("XP")) {
+        if (isEnabled("XP", true)) {
             register(new XpModifier(this));
         }
         
-        if (isEnabled("Level")) {
+        if (isEnabled("Level", true)) {
             register(new LevelModifier(this, "level"));
             register(new LevelModifier(this, "lvl"));
         }
         
-        if (isEnabled("Food")) {
+        if (isEnabled("Food", true)) {
             register(new FoodModifier(this));
         }
         
-        if (isEnabled("Balance") && getServer().getPluginManager().getPlugin("Vault") != null) {
+        if (isEnabled("Balance", true) && getServer().getPluginManager().getPlugin("Vault") != null) {
             BalanceModifier.load();
             register(new BalanceModifier(this, "balance"));
             register(new BalanceModifier(this, "bal"));
             register(new BalanceModifier(this, "money"));
         }
         
-        if (isEnabled("Statistic")) {
+        if (isEnabled("Statistic", false)) {
             for (Statistic stat : Statistic.values()) {
                 register(new StatisticModifier(this, stat));
             }
         }
     }
     
-    private boolean isEnabled(String mod) {
+    private boolean isEnabled(String mod, boolean def) {
         String path = "Modifiers." + mod;
         
         if (!getConfig().contains(path)) {
-            getConfig().set(path, true);
+            getConfig().set(path, def);
             saveConfig();
         }
         
