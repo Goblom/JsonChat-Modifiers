@@ -39,7 +39,10 @@ public class StatisticModifier extends ChatModifier {
 
     @Override
     public String onModify(Player sender) {
-        return String.valueOf(sender.getStatistic(stat));
+        try {
+            return String.valueOf(sender.getStatistic(stat));
+        } catch (Exception e) { }
+        return "Unknown";
     }
     
 }
