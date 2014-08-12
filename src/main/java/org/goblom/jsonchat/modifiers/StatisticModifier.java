@@ -29,22 +29,16 @@ import org.goblom.jsonchat.ChatModifier;
 public class StatisticModifier extends ChatModifier {
 
     private static final String PREFIX = "statistic:";
+    private final Statistic stat;
     
     public StatisticModifier(Plugin plugin, Statistic stat) {
         super(plugin, PREFIX + stat.name(), "Displays the " + stat.name() + " statistic");
+        
+        this.stat = stat;
     }
 
     @Override
     public String onModify(Player sender) {
-        String stat_name = this.getLookingFor().replace(PREFIX, "");
-        Statistic stat = null;
-        
-        try {
-            stat = Statistic.valueOf(stat_name);
-        } catch (Exception e) {}
-        
-        if (stat == null) return "0";
-        
         return String.valueOf(sender.getStatistic(stat));
     }
     
