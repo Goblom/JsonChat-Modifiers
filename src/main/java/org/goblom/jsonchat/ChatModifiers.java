@@ -17,6 +17,7 @@
 
 package org.goblom.jsonchat;
 
+import org.bukkit.Statistic;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.goblom.jsonchat.exceptions.InvalidModifierException;
 import org.goblom.jsonchat.modifiers.*;
@@ -59,6 +60,12 @@ public class ChatModifiers extends JavaPlugin {
             register(new BalanceModifier(this, "balance"));
             register(new BalanceModifier(this, "bal"));
             register(new BalanceModifier(this, "money"));
+        }
+        
+        if (isEnabled("Statistic")) {
+            for (Statistic stat : Statistic.values()) {
+                register(new StatisticModifier(this, stat));
+            }
         }
     }
     
