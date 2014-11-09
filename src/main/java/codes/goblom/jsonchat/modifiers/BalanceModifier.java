@@ -15,14 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.goblom.jsonchat.modifiers;
+package codes.goblom.jsonchat.modifiers;
 
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
-import org.goblom.jsonchat.ChatModifier;
+import codes.goblom.jsonchat.ChatModifier;
 
 /**
  *
@@ -46,7 +46,7 @@ public class BalanceModifier extends ChatModifier{
     }
 
     @Override
-    public String onModify(Player sender) {
+    public String modify(Player sender) {
         if (econ == null) {
             return "0.00";
         }

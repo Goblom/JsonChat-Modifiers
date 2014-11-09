@@ -15,34 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.goblom.jsonchat.modifiers;
+package codes.goblom.jsonchat.modifiers;
 
-import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.goblom.jsonchat.ChatModifier;
+import codes.goblom.jsonchat.ChatModifier;
 
 /**
  *
  * @author Goblom
  */
-public class StatisticModifier extends ChatModifier {
+public class FoodModifier extends ChatModifier {
 
-    private static final String PREFIX = "statistic:";
-    private final Statistic stat;
-    
-    public StatisticModifier(Plugin plugin, Statistic stat) {
-        super(plugin, PREFIX + stat.name(), "Displays the " + stat.name() + " statistic");
-        
-        this.stat = stat;
+    public FoodModifier(Plugin plugin) {
+        super(plugin, "food", "Display players food level.");
     }
 
     @Override
-    public String onModify(Player sender) {
-        try {
-            return String.valueOf(sender.getStatistic(stat));
-        } catch (Exception e) { }
-        return "Unknown";
+    public String modify(Player sender) {
+        return String.valueOf(sender.getFoodLevel());
     }
     
 }

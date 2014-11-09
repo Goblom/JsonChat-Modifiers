@@ -15,12 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.goblom.jsonchat;
+package codes.goblom.jsonchat;
 
-import org.bukkit.Statistic;
+import codes.goblom.jsonchat.modifiers.LevelModifier;
+import codes.goblom.jsonchat.modifiers.HealthModifier;
+import codes.goblom.jsonchat.modifiers.BalanceModifier;
+import codes.goblom.jsonchat.modifiers.LocationModifier;
+import codes.goblom.jsonchat.modifiers.FoodModifier;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.goblom.jsonchat.exceptions.InvalidModifierException;
-import org.goblom.jsonchat.modifiers.*;
+import codes.goblom.jsonchat.exceptions.InvalidModifierException;
 
 /**
  *
@@ -42,10 +45,6 @@ public class ChatModifiers extends JavaPlugin {
             register(new LocationModifier(this, "loc"));
         }
         
-        if (isEnabled("XP", true)) {
-            register(new XpModifier(this));
-        }
-        
         if (isEnabled("Level", true)) {
             register(new LevelModifier(this, "level"));
             register(new LevelModifier(this, "lvl"));
@@ -60,12 +59,6 @@ public class ChatModifiers extends JavaPlugin {
             register(new BalanceModifier(this, "balance"));
             register(new BalanceModifier(this, "bal"));
             register(new BalanceModifier(this, "money"));
-        }
-        
-        if (isEnabled("Statistic", false)) {
-            for (Statistic stat : Statistic.values()) {
-                register(new StatisticModifier(this, stat));
-            }
         }
     }
     

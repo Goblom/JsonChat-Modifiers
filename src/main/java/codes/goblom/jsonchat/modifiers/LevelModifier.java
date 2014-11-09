@@ -15,11 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.goblom.jsonchat.modifiers;
+package codes.goblom.jsonchat.modifiers;
 
 import org.bukkit.entity.Player;
-import org.goblom.jsonchat.ChatModifier;
-import org.goblom.jsonchat.ChatModifiers;
+import codes.goblom.jsonchat.ChatModifier;
+import codes.goblom.jsonchat.ChatModifiers;
 
 /**
  *
@@ -32,7 +32,7 @@ public class LevelModifier extends ChatModifier {
     }
 
     @Override
-    public String onModify(Player sender) {
+    public String modify(Player sender) {
         return String.valueOf(sender.getLevel());
     }
     

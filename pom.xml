@@ -43,14 +43,14 @@
             <version>1.7.10-R0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>JSONChat</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>net.milkbowl.vault</groupId>
             <artifactId>Vault</artifactId>
             <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>codes.goblom</groupId>
+            <artifactId>JsonChatv2</artifactId>
+            <version>Plugin</version>
         </dependency>
     </dependencies>
 </project>

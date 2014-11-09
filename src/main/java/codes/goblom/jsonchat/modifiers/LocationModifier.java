@@ -15,25 +15,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.goblom.jsonchat.modifiers;
+package codes.goblom.jsonchat.modifiers;
 
 import org.bukkit.entity.Player;
-import org.goblom.jsonchat.ChatModifier;
-import org.goblom.jsonchat.ChatModifiers;
+import codes.goblom.jsonchat.ChatModifier;
+import codes.goblom.jsonchat.ChatModifiers;
 
 /**
  *
  * @author Goblom
  */
-public class XpModifier extends ChatModifier {
+public class LocationModifier extends ChatModifier {
 
-    public XpModifier(ChatModifiers plugin) {
-        super(plugin, "xp", "Display the current xp of the player");
+    public LocationModifier(ChatModifiers plugin, String lookFor) {
+        super(plugin, lookFor, "Display the location of the player");
     }
 
     @Override
-    public String onModify(Player sender) {
-        return String.valueOf(sender.getExp());
+    public String modify(Player sender) {
+        String world = sender.getLocation().getWorld().getName();
+        int x = sender.getLocation().getBlockX();
+        int y = sender.getLocation().getBlockY();
+        int z = sender.getLocation().getBlockZ();
+        
+        return world + " " + x + " " + y + " " + z;
     }
     
 }
