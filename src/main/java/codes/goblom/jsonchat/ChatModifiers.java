@@ -24,6 +24,8 @@ import codes.goblom.jsonchat.modifiers.LocationModifier;
 import codes.goblom.jsonchat.modifiers.FoodModifier;
 import org.bukkit.plugin.java.JavaPlugin;
 import codes.goblom.jsonchat.exceptions.InvalidModifierException;
+import codes.goblom.jsonchat.modifiers.GamemodeModifier;
+import codes.goblom.jsonchat.modifiers.OpModifier;
 
 /**
  *
@@ -35,38 +37,47 @@ public class ChatModifiers extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         
-        if (isEnabled("Health", true)) {
+        if (isEnabled("Health")) {
             register(new HealthModifier(this, "health"));
             register(new HealthModifier(this, "hp"));
         }
         
-        if (isEnabled("Location", true)) {
+        if (isEnabled("Location")) {
             register(new LocationModifier(this, "location"));
             register(new LocationModifier(this, "loc"));
         }
         
-        if (isEnabled("Level", true)) {
+        if (isEnabled("Level")) {
             register(new LevelModifier(this, "level"));
             register(new LevelModifier(this, "lvl"));
         }
         
-        if (isEnabled("Food", true)) {
+        if (isEnabled("Food")) {
             register(new FoodModifier(this));
         }
         
-        if (isEnabled("Balance", true) && getServer().getPluginManager().getPlugin("Vault") != null) {
+        if (isEnabled("Balance") && getServer().getPluginManager().getPlugin("Vault") != null) {
             BalanceModifier.load();
             register(new BalanceModifier(this, "balance"));
             register(new BalanceModifier(this, "bal"));
             register(new BalanceModifier(this, "money"));
         }
+        
+        if (isEnabled("GameMode")) {
+            register(new GamemodeModifier(this, "gamemode"));
+            register(new GamemodeModifier(this, "gm"));
+        }
+        
+        if (isEnabled("Operator")) {
+            register(new OpModifier(this, "op"));
+        }
     }
     
-    private boolean isEnabled(String mod, boolean def) {
+    private boolean isEnabled(String mod) {
         String path = "Modifiers." + mod;
         
         if (!getConfig().contains(path)) {
-            getConfig().set(path, def);
+            getConfig().set(path, true);
             saveConfig();
         }
         
